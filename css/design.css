@@ -1171,3 +1171,139 @@ time {
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
+
+/* Responsive navigation */
+
+@media screen {
+    .mbar {
+        display: none;
+    }
+
+    @media (max-width: 700px) {
+        .dnav {
+            display: none;
+        }
+
+        .mbar {
+            display: block;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 8px 16px;
+            border-bottom: 1px solid var(--hair);
+            background: var(--bg);
+        }
+
+        .mbar-pill {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mnav {
+            position: relative;
+            flex: 1;
+        }
+
+        .mnav summary {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 44px;
+            cursor: pointer;
+            list-style: none;
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .mnav summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .mnav-pct {
+            margin-left: auto;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 12px;
+        }
+
+        .mnav-panel {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            z-index: 110;
+            width: min(280px, calc(100vw - 32px));
+            padding: 8px;
+            border: 1px solid var(--ink);
+            background: var(--bg);
+        }
+
+        .mnav-panel ol {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .mnav-panel a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .mnav-panel a[aria-current] {
+            background: var(--soft);
+            font-weight: 700;
+        }
+
+        .mnav-num,
+        .mnav-n {
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 12px;
+        }
+
+        .theme-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            border: 1px solid var(--ink);
+            border-radius: 0;
+            background: var(--bg);
+            color: var(--ink);
+            cursor: pointer;
+        }
+    }
+}
+
+/* Arch Linux glyph theme switching */
+
+.arch-glyph-dark {
+    display: none;
+}
+
+:root[data-theme="dark"] .arch-glyph-light {
+    display: none;
+}
+
+:root[data-theme="dark"] .arch-glyph-dark {
+    display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .arch-glyph-light {
+        display: none;
+    }
+
+    :root:not([data-theme="light"]) .arch-glyph-dark {
+        display: block;
+    }
+}
